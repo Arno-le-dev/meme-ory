@@ -1,0 +1,4 @@
+Step 1 : 
+
+- Component-oriented programming : peut être considéré comme plus maintenable,
+cela  permet de centraliser tout les éléments de chaque view et ainsi de ne pas avoir à les chercher partout. 
