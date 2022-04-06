@@ -10,10 +10,10 @@
     },
   };
 
-  // TODO Step 3.1 create a class
   /* class GameComponent constructor */
-  function GameComponent() {
+  class GameComponent {
     // gather parameters from URL
+    constructor(){
     var params = parseUrl();
 
     // save player name & game ize
@@ -24,7 +24,7 @@
   }
 
   /* method GameComponent.init */
-  GameComponent.prototype.init = function init() {
+  init() {
     // fetch the cards configuration from the server
     this.fetchConfig(
       function (config) {
@@ -62,7 +62,7 @@
   // TODO Step 7 implement getTemplate() {}
 
   /* method GameComponent.start */
-  GameComponent.prototype.start = function start() {
+  start() {
     this._startTime = Date.now();
     var seconds = 0;
     // TODO Step 3.2: use template literals (backquotes)
@@ -81,7 +81,7 @@
   };
 
   /* method GameComponent.fetchConfig */
-  GameComponent.prototype.fetchConfig = function fetchConfig(cb) {
+  fetchConfig(cb) {
     var xhr =
       typeof XMLHttpRequest != "undefined"
         ? new XMLHttpRequest()
@@ -110,7 +110,7 @@
   };
 
   /* method GameComponent.gotoScore */
-  GameComponent.prototype.gotoScore = function gotoScore() {
+  gotoScore() {
     var timeElapsedInSeconds = Math.floor(
       (Date.now() - this._startTime) / 1000
     );
@@ -135,7 +135,7 @@
   };
 
   /* method GameComponent._flipCard */
-  GameComponent.prototype._flipCard = function _flipCard(card) {
+  _flipCard(card) {
     if (this._busy) {
       return;
     }
@@ -189,22 +189,26 @@
   };
 
   // TODO Step 6: Move this method to utils.js
-  function parseUrl() {
-    var url = window.location;
-    var query = url.href.split("?")[1] || "";
-    var delimiter = "&";
-    var result = {};
+  
 
-    var parts = query.split(delimiter);
-    // TODO Step 3.3: Use Array.map() & Array.reduce()
-    for (var i in parts) {
-      var item = parts[i];
-      var kv = item.split("=");
-      result[kv[0]] = kv[1];
-    }
+}
 
-    return result;
+function parseUrl() {
+  var url = window.location;
+  var query = url.href.split("?")[1] || "";
+  var delimiter = "&";
+  var result = {};
+
+  var parts = query.split(delimiter);
+  // TODO Step 3.3: Use Array.map() & Array.reduce()
+  for (var i in parts) {
+    var item = parts[i];
+    var kv = item.split("=");
+    result[kv[0]] = kv[1];
   }
+
+  return result;
+}
 
   // put component in global scope, to be runnable right from the HTML.
   // TODO Step 7: export GameComponent

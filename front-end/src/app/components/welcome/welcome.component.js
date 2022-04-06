@@ -5,11 +5,11 @@
 
     // TODO Step 3.1 create a class
     /* class WelcomeComponent constructor  */
-    function WelcomeComponent() {
-    }
+    class WelcomeComponent{
+   
 
     /* method WelcomeComponent.init */
-    WelcomeComponent.prototype.init = function init() {
+    init() {
         var form = document.querySelector('form.form-signin');
 
         form.addEventListener('submit', function(event) {     // TODO Step 3.2: use arrow function
@@ -31,12 +31,16 @@
 
     // TODO Step 7 implement getTemplate() {}
 
-    function _startGame(name, size) {
-        // TODO Step 1: replace with '../game/game.component.html?name=...'
-        // TODO Step 3.2: use template literals (backquotes)
-        // TODO Step 7: change path to: `game?name=${name}=name&size=${size}`
-        window.location = '../game/game.component.html?name=' + name + '&size=' + size;
-    }
+   
+
+}
+
+function _startGame(name, size) {
+    // TODO Step 1: replace with '../game/game.component.html?name=...'
+    // TODO Step 3.2: use template literals (backquotes)
+    // TODO Step 7: change path to: `game?name=${name}=name&size=${size}`
+    window.location = '../game/game.component.html?name=' + name + '&size=' + size;
+}
 
     // put component in global scope, to be runnable right from the HTML.
     // TODO Step 7 export WelcomeComponent

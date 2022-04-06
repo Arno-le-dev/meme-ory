@@ -6,10 +6,10 @@
 
   // TODO Step 3.1 create a class
   /* class CardComponent constructor */
-  function CardComponent(id) {
+  class CardComponent {
+    constructor(id){
+      this._flipped = false;
     // is this card flipped ?
-    this._flipped = false;
-
     // has the matching card has been discovered already ?
     this.matched = false;
 
@@ -22,11 +22,13 @@
       "./card/assets/card-" + this._id + ".png";
     this._imageElt.querySelector("img.back-face").src =
       "./card/assets/back.png";
-  }
+    }
+   
+  
 
   /* method CardComponent.getElement */
   // TODO Step 7: remove this method
-  CardComponent.prototype.getElement = function getElement() {
+  getElement() {
     if (!this._elt) {
       this._elt = document
         .getElementById("card-template")
@@ -38,24 +40,22 @@
   // TODO Step 7 implement getTemplate() {}
 
   /* method CardComponent.flip */
-  CardComponent.prototype.flip = function flip() {
+  flip() {
     this._imageElt.classList.toggle("flip");
     this._flipped = !this._flipped;
   };
 
   /* method CardComponent.equals */
-  CardComponent.prototype.equals = function equals(card) {
+  equals(card) {
     return card._id === this._id;
   };
-
+  
   /* CardComponent.get flipped() */
-  Object.defineProperties(CardComponent.prototype, {
-    flipped: {
-      get: function () {
+  getFlipped() {   
         return this._flipped;
-      },
-    },
-  });
+      }
+
+    }
 
   // put component in global scope, to be runnable right from the HTML.
   // TODO Step 7 export CardComponent
