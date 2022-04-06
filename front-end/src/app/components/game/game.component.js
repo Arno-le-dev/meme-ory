@@ -122,13 +122,7 @@
         // TODO Step 1: replace with '../score/score.component.html?name=...' location
         // TODO Step 3.2: use template literals (backquotes)
         // TODO Step 7: change path to: `score?name=${this._name}&size=${this._size}'&time=${timeElapsedInSeconds}`;
-        window.location =
-          "../score/score.component.html?name=" +
-          this._name +
-          "&size=" +
-          this._size +
-          "&time=" +
-          timeElapsedInSeconds;
+        window.location = `../score/score.component.html?name=${this._name}&size=${this._size}&time=${timeElapsedInSeconds}`;
       }.bind(this),
       750
     ); // TODO Step 3.2: Why bind(this)?
@@ -194,16 +188,16 @@
 }
 
 function parseUrl() {
-  var url = window.location;
-  var query = url.href.split("?")[1] || "";
-  var delimiter = "&";
-  var result = {};
+  const url = window.location;
+  let query = url.href.split("?")[1] || "";
+  const delimiter = "&";
+  let result = {};
 
-  var parts = query.split(delimiter);
+  let parts = query.split(delimiter);
   // TODO Step 3.3: Use Array.map() & Array.reduce()
-  for (var i in parts) {
-    var item = parts[i];
-    var kv = item.split("=");
+  for (let i in parts) {
+    let item = parts[i];
+    let kv = item.split("=");
     result[kv[0]] = kv[1];
   }
 

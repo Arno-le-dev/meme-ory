@@ -62,7 +62,7 @@
   window.CardComponent = CardComponent;
 })();
 
-var environment = {
+let environment = {
   api: {
     host: "See that ? Without closures, I can override variables from other files that belongs to the global scope.",
   },
