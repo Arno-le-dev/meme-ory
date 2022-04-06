@@ -16,13 +16,12 @@
     this._id = id;
 
     this._imageElt = this.getElement().querySelector(".card-wrapper");
-    // TODO Step 1: Change images location to ./card/assets/***.png
     // TODO Step 3.2: use template literals (backquotes)
     // TODO Step 7: Update the path for images with 'src/app/components/game/card/assets/card***'
     this._imageElt.querySelector("img.front-face").src =
-      "../../assets/cards/card-" + this._id + ".png";
+      "./card/assets/card-" + this._id + ".png";
     this._imageElt.querySelector("img.back-face").src =
-      "../../assets/cards/back.png";
+      "./card/assets/back.png";
   }
 
   /* method CardComponent.getElement */

@@ -3,21 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <title>MÈME ory</title>
-    <!-- TODO Step 1: change css location to '../../styles/style.css' -->
-    <link rel="stylesheet" href="../styles/style.css" />
-    <!-- TODO Step 1: change css location to '../../styles/bootstrap.css' -->
+    <link rel="stylesheet" href="../../styles/style.css" />
     <!-- TODO Step 2.1: change css location to '../../../../node_modules/bootstrap/dist/css/bootstrap.css' -->
-    <link rel="stylesheet" href="../styles/bootstrap.css" />
+    <link rel="stylesheet" href="../../styles/bootstrap.css" />
     <!-- TODO Step 1: add link to a new './card/cart.component.css' file -->
+    <link rel="stylesheet" href="./card/card.component.css" />
   </head>
 
   <body class="d-flex flex-column">
     <nav class="navbar bg-primary mb-3 shadow">
       <a class="navbar-brand d-flex" href="/src">
-        <!-- TODO Step 1: change image location to '../../../assets/logo_take_my_money.png' -->
         <img
           class="d-inline-block align-top"
-          src="../../assets/logo_take_my_money.png"
+          src="../../../assets/logo_take_my_money.png"
           alt="logo"
         />
         <span class="align-self-center m-2">MÈME ory</span>
@@ -42,11 +40,10 @@
     <main class="card-cmp">
       <div class="card-wrapper">
         <img class="card front-face" alt="card" />
-        <!-- TODO Step 1: change image location to './card/assets/back.png' -->
         <img
           class="card back-face"
           alt="card"
-          src="../../assets/cards/back.png"
+          src="./card/assets/back.png"
         />
       </div>
     </main>
@@ -56,9 +53,8 @@
   <!-- TODO Step 7: remove all <script> tags -->
 
   <!-- TODO Step 1: change script location to './game.component.js' -->
-  <script src="../scripts/game.js"></script>
-  <!-- TODO Step 1: change script location to './card/card.component.js' -->
-  <script src="../scripts/card.js"></script>
+  <script src="./game.component.js"></script>
+  <script src="./card/card.component.js"></script>
   <script>
     (function () {
       new GameComponent().init();

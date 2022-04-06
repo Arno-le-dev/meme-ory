@@ -35,7 +35,7 @@
         // TODO Step 1: replace with '../game/game.component.html?name=...'
         // TODO Step 3.2: use template literals (backquotes)
         // TODO Step 7: change path to: `game?name=${name}=name&size=${size}`
-        window.location = './game.html?name=' + name + '&size=' + size;
+        window.location = '../game/game.component.html?name=' + name + '&size=' + size;
     }
 
     // put component in global scope, to be runnable right from the HTML.

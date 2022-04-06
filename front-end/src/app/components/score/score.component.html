@@ -3,12 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>MÈME ory</title>
-    <!-- TODO Step 1: change css location to '../../styles/style.css' -->
-    <link rel="stylesheet" href="../styles/style.css" />
-    <!-- TODO Step 1: add link to a new './score.component.css' file -->
-
+    <link rel="stylesheet" href="../../styles/style.css" />
+    <link rel="stylesheet" href="./score.component.css" />
     <!-- TODO Step 2.1: change css location to '../../../../node_modules/bootstrap/dist/css/bootstrap.css' -->
-    <link rel="stylesheet" href="../styles/bootstrap.css" />
+    <link rel="stylesheet" href="../../styles/bootstrap.css" />
   </head>
 
   <body class="d-flex flex-column">
@@ -17,7 +15,7 @@
         <!-- TODO Step 1: change image location to '../../../assets/logo_take_my_money.png' -->
         <img
           class="d-inline-block align-top"
-          src="../../assets/logo_take_my_money.png"
+          src="../../../assets/logo_take_my_money.png"
           alt="logo"
         />
         <span class="align-self-center m-2">MÈME ory</span>
@@ -33,8 +31,7 @@
             <h3 class="congrats">CONGRATS<br /><span id="name"></span></h3>
           </div>
           <div>
-            <!-- TODO Step 1: change image location to './assets/happy_homer.jpg' -->
-            <img src="../../assets/happy_homer.jpg" class="happy" />
+            <img src="./assets/happy_homer.jpg" class="happy" />
             <p class="size"><span id="size"></span> pairs</p>
             <p class="time"><span id="time"></span>s</p>
           </div>
@@ -48,9 +45,8 @@
   </body>
 
   <!-- link to welcome controller -->
-  <!-- TODO Step 1: change script location to './score.component.js' -->
   <!-- TODO Step 7: remove all <script> tags -->
-  <script src="../scripts/score.js"></script>
+  <script src="./score.component.js"></script>
   <script>
     new ScoreComponent().init();
   </script>

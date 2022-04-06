@@ -123,7 +123,7 @@
         // TODO Step 3.2: use template literals (backquotes)
         // TODO Step 7: change path to: `score?name=${this._name}&size=${this._size}'&time=${timeElapsedInSeconds}`;
         window.location =
-          "score.html?name=" +
+          "../score/score.component.html?name=" +
           this._name +
           "&size=" +
           this._size +
