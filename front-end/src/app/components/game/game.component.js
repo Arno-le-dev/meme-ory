@@ -31,26 +31,19 @@
         this._config = config;
 
         // create a card out of the config
-        this._cards = []; // TODO Step 3.3: use Array.map()
-        for (let i in this._config.ids) {
-          this._cards[i] = new CardComponent(this._config.ids[i]);
-        }
+        this._cards = []; 
+        this._config.ids.map((id) => this._cards.push(new CardComponent(id)));
 
         this._boardElement = document.querySelector(".cards");
 
-        for (let i in this._cards) {
-          // TODO Step 3.3: use Array.forEach()
-            let card = this._cards[i];
-            this._boardElement.appendChild(card.getElement());
-            card.getElement().addEventListener(
-              "click",
-              () =>  {
-                this._flipCard(card);
-              }
-            );
-        
-        }
-
+        this._cards.forEach((element) => {
+          // TODO Step 3.2: use arrow function
+          const card = element;
+          this._boardElement.appendChild(element.getElement());
+          card.getElement().addEventListener("click", () => {
+            this._flipCard(card);
+          }); // TODO Step 3.2 use arrow function.
+        });
         this.start();
       }
     );
@@ -180,17 +173,17 @@ function parseUrl() {
   const delimiter = "&";
   let result = {};
 
-  let parts = query.split(delimiter);
-  // TODO Step 3.3: Use Array.map() & Array.reduce()
-  for (let i in parts) {
-    let item = parts[i];
-    let kv = item.split("=");
-    result[kv[0]] = kv[1];
-  }
+  var parts = query.split(delimiter);
 
-  return result;
+  return parts
+    .map((items) => {
+      return items.split("=");
+    })
+    .reduce((result, kv) => {
+      result[kv[0]] = kv[1];
+      return result;
+    }, {});
 }
-
   // put component in global scope, to be runnable right from the HTML.
   // TODO Step 7: export GameComponent
   window.GameComponent = GameComponent;
