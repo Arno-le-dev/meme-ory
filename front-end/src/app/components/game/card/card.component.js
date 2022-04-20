@@ -4,7 +4,6 @@
 (function () {
   // TODO Step 7 remove this closure
 
-  // TODO Step 3.1 create a class
   /* class CardComponent constructor */
   class CardComponent {
     constructor(id){
