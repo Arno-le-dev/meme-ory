@@ -24,30 +24,32 @@
   }
 
   /* method GameComponent.init */
-  init() {
+  async init() {
     // fetch the cards configuration from the server
-    this.fetchConfig(
-       (config) =>  {
-        this._config = config;
+    const config = await this.fetchConfig();
+    //.then((config) => {
+    // TODO Step 3.2: use arrow function
+    this._config = config;
 
-        // create a card out of the config
-        this._cards = []; 
-        this._config.ids.map((id) => this._cards.push(new CardComponent(id)));
+    // create a card out of the config
+    this._cards = []; // TODO Step 3.3: use Array.map()
 
-        this._boardElement = document.querySelector(".cards");
+    this._config.ids.map((id) => this._cards.push(new CardComponent(id)));
 
-        this._cards.forEach((element) => {
-          // TODO Step 3.2: use arrow function
-          const card = element;
-          this._boardElement.appendChild(element.getElement());
-          card.getElement().addEventListener("click", () => {
-            this._flipCard(card);
-          }); // TODO Step 3.2 use arrow function.
-        });
-        this.start();
-      }
-    );
-  };
+    this._boardElement = document.querySelector(".cards");
+
+    this._cards.forEach((element) => {
+      // TODO Step 3.2: use arrow function
+      const card = element;
+      this._boardElement.appendChild(element.getElement());
+      card.getElement().addEventListener("click", () => {
+        this._flipCard(card);
+      }); // TODO Step 3.2 use arrow function.
+    });
+    this.start();
+    //});
+  }
+
 
   // TODO Step 7 implement getTemplate() {}
 
@@ -66,32 +68,15 @@
   };
 
   /* method GameComponent.fetchConfig */
-  fetchConfig(cb) {
-    let xhr =
-      typeof XMLHttpRequest != "undefined"
-        ? new XMLHttpRequest()
-        : new ActiveXObject("Microsoft.XMLHTTP");
-
-   
-    xhr.open("get", `${environment.api.host}/board?size=${this._size}`, true);
-
-    xhr.onreadystatechange = () =>  {
-      let status;
-      let data;
-      // https://xhr.spec.whatwg.org/#dom-xmlhttprequest-readystate
-      if (xhr.readyState == 4) {
-        // `DONE`
-        status = xhr.status;
-        if (status == 200) {
-          data = JSON.parse(xhr.responseText);
-          cb(data);
-        } else {
-          throw new Error(status);
-        }
-      }
-    };
-    xhr.send();
-  };
+  async fetchConfig() {
+    return await fetch(`${environment.api.host}/board?size=${this._size}`, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .catch((error) =>
+        console.log("Error while fetching   config: ", error)
+      );
+  }
 
   /* method GameComponent.gotoScore */
   gotoScore() {
