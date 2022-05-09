@@ -1,19 +1,17 @@
-// TODO Step 6 import { parseUrl } from '../../utils/utils.js';
-// TODO Step 7 import { Component } from "../../utils/component";
-// TODO Step 7 import template from "./game.component.html"
+import { parseUrl } from "../../utils/utils";
+import { Component } from "../../utils/component";
+import template from "./game.component.html";
 
-(function () {
-  // TODO Step 6 remove this closure
+
   const environment = {
     api: {
       host: "http://localhost:8081",
     },
   };
 
-  /* class GameComponent constructor */
-  class GameComponent {
-    // gather parameters from URL
+  export class GameComponent extends Component {
     constructor(){
+    super("game");
     let params = parseUrl();
 
     // save player name & game ize
@@ -32,8 +30,7 @@
     this._config = config;
 
     // create a card out of the config
-    this._cards = []; // TODO Step 3.3: use Array.map()
-
+    this._cards = []; 
     this._config.ids.map((id) => this._cards.push(new CardComponent(id)));
 
     this._boardElement = document.querySelector(".cards");
@@ -152,24 +149,7 @@
 
 }
 
-function parseUrl() {
-  const url = window.location;
-  let query = url.href.split("?")[1] || "";
-  const delimiter = "&";
-  let result = {};
-
-  var parts = query.split(delimiter);
-
-  return parts
-    .map((items) => {
-      return items.split("=");
-    })
-    .reduce((result, kv) => {
-      result[kv[0]] = kv[1];
-      return result;
-    }, {});
-}
   // put component in global scope, to be runnable right from the HTML.
   // TODO Step 7: export GameComponent
   window.GameComponent = GameComponent;
-})();
+
